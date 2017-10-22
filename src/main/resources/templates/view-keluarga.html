@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Lihat Data Keluarga</title>
+<meta charset="utf-8"></meta>
+<meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css" />
+
+<script type="text/javascript" src="/js/bootstrap.min.js"></script>
+<link rel="stylesheet" type="text/css" href="/css/datatables.min.css" />
+<script type="text/javascript" src="/js/datatables.min.js"></script>
+<script>
+	$(document).ready(function() {
+		$('#viewall').DataTable();
+	});
+</script>
+</head>
+<body>
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+		<a class="navbar-brand" href="#">SI Kependudukan</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse"
+			data-target="#navbarSupportedContent"
+			aria-controls="navbarSupportedContent" aria-expanded="false"
+			aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+			<ul class="navbar-nav mr-auto">
+				<li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+				<li class="nav-item"><a class="nav-link" href="#">Cari Data</a></li>
+				<li class="nav-item"><a class="nav-link" href="/penduduk/tambah" action="/penduduk/tambah" method="get">Tambah Penduduk</a></li>
+				<li class="nav-item"><a class="nav-link" href="/keluarga/tambah" action="/keluarga/tambah" method="get">Tambah Keluarga</a></li>
+			</ul>
+
+		</div>
+	</nav>
+	<div class="container-fluid text-center">
+		<div class="row content">
+			<div class="col-sm-8 text-left">
+				<h4 th:text="'Lihat Data Keluarga - ' + ${keluarga.nomor_kk}">Lihat Data Keluarga</h4>
+				
+				<br></br>
+				<table class="display" cellspacing="0" style="width: 70%">
+					<tr>
+						<td><strong>NKK</strong></td>
+						<td><p th:text="${keluarga.nomor_kk}">NKK Keluarga</p></td>
+					</tr>
+					<tr>
+						<td><strong>Alamat</strong></td>
+						<td><p th:text="${keluarga.alamat}">Alamat Keluarga</p></td>
+					</tr>
+					<tr>
+						<td><strong>RT/RW</strong></td>
+						<td><p th:text="${keluarga.RT} + '/' + ${keluarga.RW}">RT/RW
+								Keluarga</p></td>
+					</tr>
+					<tr>
+						<td><strong>Kelurahan/Desa</strong></td>
+						<td><p th:text="${kelurahan.nama_kelurahan}">Kelurahan
+								Keluarga</p></td>
+					</tr>
+					<tr>
+						<td><strong>Kecamatan</strong></td>
+						<td><p th:text="${kecamatan.nama_kecamatan}">Kecamatan
+								Keluarga</p></td>
+					</tr>
+					<tr>
+						<td><strong>Kota</strong></td>
+						<td><p th:text="${kota.nama_kota}">Kota Keluarga</p></td>
+					</tr>
+				</table>
+				</div>
+				<br></br>
+				<hr/>
+				
+				<table id="viewall" class="display" cellspacing="0" width="100%" style="text-align:justify">
+					<thead>
+						<tr>
+							<th>No</th>
+							<th>Nama Lengkap</th>
+							<th>NIK</th>
+							<th>Jenis Kelamin</th>
+							<th>Tempat Lahir</th>
+							<th>Tanggal Lahir</th>
+							<th>Agama</th>
+							<th>Pekerjaan</th>
+							<th>Status Perkawinan</th>
+							<th>Status Dalam Keluarga</th>
+							<th>Kewarganegaraan</th>
+						</tr>
+					</thead>
+
+					<tbody>
+						<tr th:each="penduduk,iterationStatus: ${keluarga.pendudukKeluarga}">
+							<td th:text="${iterationStatus.count}">No</td>
+							<td th:text="${penduduk.nama}">Nama Lengkap</td>
+							<td th:text="${penduduk.nik}">NIK</td>
+							<td th:text="${penduduk.jenis_kelamin>=1} ? 'Wanita' : 'Pria'"></td>
+
+							<td th:text="${penduduk.tempat_lahir}">Tempat Lahir</td>
+							<td th:text="${penduduk.tanggal_lahir}">Tanggal Lahir</td>
+							<td th:text="${penduduk.agama}">Agama</td>
+							<td th:text="${penduduk.pekerjaan}">Pekerjaan</td>
+							<td th:text="${penduduk.status_perkawinan}">Status
+								Perkawinan</td>
+							<td th:text="${penduduk.status_dalam_keluarga}">Status Dalam
+								Keluarga</td>
+							<td th:text="${penduduk.is_wni>=1} ? 'WNI' : 'WNA'"></td>
+						</tr>
+					</tbody>
+				</table>
+		</div>
+	</div>
+</body>
+	<button type="submit" class="btn btn-primary" name="action"
+						value="submit">Ubah Data Keluarga</button>
+</html>

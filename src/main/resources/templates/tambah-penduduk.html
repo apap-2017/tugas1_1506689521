@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Tambah Penduduk</title>
+<meta charset="utf-8"></meta>
+<meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css" />
+<script type="text/javascript" src="/js/bootstrap.min.js"></script>
+</head>
+<body>
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+		<a class="navbar-brand" href="#">SI Kependudukan</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse"
+			data-target="#navbarSupportedContent"
+			aria-controls="navbarSupportedContent" aria-expanded="false"
+			aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+			<ul class="navbar-nav mr-auto">
+				<li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+				<li class="nav-item"><a class="nav-link" href="#">Cari Data</a></li>
+				<li class="nav-item"><a class="nav-link" href="/penduduk/tambah" action="/penduduk/tambah" method="get">Tambah Penduduk</a></li>
+				<li class="nav-item"><a class="nav-link" href="/keluarga/tambah" action="/keluarga/tambah" method="get">Tambah Keluarga</a></li>
+			</ul>
+
+		</div>
+	</nav>
+	<div class="container-fluid text-center">
+		<div class="row content">
+			<div class="col-sm-2"></div>
+			<div class="col-sm-8 text-left">
+				<h1 class="page-header">Tambah Penduduk</h1>
+				<br></br>
+				<br></br>
+				<form action="/penduduk/tambah" method="post">
+					<div class="form-group">
+						<label for="nama"><strong>Masukkan Nama</strong></label> <input type="text"
+							class="form-control" id="nama" name="nama" placeholder="nama" />
+					</div>
+
+					<div class="form-group">
+						<label for="tempat_lahir"><strong>Tempat Lahir</strong></label> <input type="text"
+							class="form-control" id="tempat_lahir" name="tempat_lahir" placeholder="tempat lahir"/>
+					</div>
+					<div class="form-group">
+						<label for="tanggal_lahir"><strong>Tanggal Lahir</strong></label> <input
+							type="date" class="form-control" id="tanggal_lahir"
+							name="tanggal_lahir" placeholder="yyyy-mm-dd" />
+					</div>
+					<div class="form-group">
+						<label for="jenis_kelamin"><strong>Jenis Kelamin</strong></label> <select
+							class="form-control" name="jenis_kelamin">
+							<option value="1" selected="selected">Wanita</option>
+							<option value="0">Pria</option>
+						</select>
+					</div>
+					<div class="form-group">
+						<label for="golongan_darah"><strong>Golongan Darah</strong></label> <select
+							class="form-control" name="golongan_darah">
+							<option selected="selected">AB</option>
+							<option>A</option>
+							<option>B</option>
+							<option>O</option>
+						</select>
+					</div>
+					<div class="form-group">
+						<label for="agama"><strong>Agama</strong></label> <input type="text"
+							class="form-control" id="agama" name="agama" placeholder="agama"/>
+					</div>
+					<div class="form-group">
+						<label for="status_perkawinan"><strong>Status Perkawinan</strong></label> <select
+							class="form-control" name="status_perkawinan">
+							<option selected="selected">Belum Kawin</option>
+							<option>Kawin</option>
+						</select>
+					</div>
+					<div class="form-group">
+						<label for="pekerjaan"><strong>Pekerjaan</strong></label> <input type="text"
+							class="form-control" id="pekerjaan" name="pekerjaan" placeholder="pekerjaan"/>
+					</div>
+					<div class="form-group">
+						<label for="is_wni"><strong>Kewarganegaraan</strong></label> <select
+							class="form-control" name="is_wni">
+							<option value="0" selected="selected">WNA</option>
+							<option value="1">WNI</option>
+						</select>
+					</div>
+					<div class="form-group">
+						<label for="status_kematian"><strong>Status Kematian</strong></label> <select
+							class="form-control" name="is_wafat">
+							<option value="0" selected="selected">Hidup</option>
+							<option value="1">Mati</option>
+						</select>
+					</div>
+					<div class="form-group">
+						<label for="id_keluarga"><strong>Id Keluarga</strong></label> <input type="text"
+							class="form-control" id="id_keluarga" name="id_keluarga" placeholder="id keluarga"/>
+					</div>
+					<div class="form-group">
+						<label for="status_dalam_keluarga"><strong>Status Dalam Keluarga</strong></label> <input
+							type="text" class="form-control" id="status_dalam_keluarga"
+							name="status_dalam_keluarga" placeholder="status dalam keluarga"/>
+					</div>
+					<button type="submit" class="btn btn-primary" name="action"
+						value="submit">Simpan</button>
+				</form>
+			</div>
+			<div class="col-sm-2"></div>
+		</div>
+	</div>
+</body>
+</html>
